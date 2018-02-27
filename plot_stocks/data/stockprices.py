@@ -19,18 +19,19 @@ class StockPrices(object):
 
     def get_symbols(self):
         """Get available symbols from IEX."""
-        return self._iex_symbols['symbol'][
-            self._iex_symbols['isEnabled']]
+        return self._iex_symbols['symbol']
 
     def get_metadata(self, symbols):
         """Get metadat from IEX."""
+        if isinstance(symbols, str):
+            symbols = [symbols]
         return self._iex_symbols[self._iex_symbols['symbol'].isin(symbols)]
 
-    def get_history(self, symbol,
-                    start_date='2017-1-1', end_date=None):
+    def get_history(self, symbols,
+                    start_date=None, end_date=None):
         """Get daily stock prices."""
         data = self._datareader.DataReader(
-            symbol, 'morningstar', start_date, end_date)
+            symbols, 'morningstar', start_date, end_date)
         data.rename(columns=lambda x: x.lower(), inplace=True)
         data.index.names = [x.lower() for x in data.index.names]
         data = data.sort_index()

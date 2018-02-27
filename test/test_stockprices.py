@@ -16,7 +16,7 @@ class TestStockPrices(unittest.TestCase):
         self.stockprices = StockPrices()
 
     def tearDown(self):
-        pass
+        self.stockprices = None
 
     def test_get_symbols(self):
         res = self.stockprices.get_symbols()
