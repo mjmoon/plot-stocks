@@ -1,0 +1,10 @@
+dash >= 0.21.0
+dash-renderer >= 0.11.3
+dash-html-components >= 0.8.0
+dash-core-components >= 0.18.1
+plotly
+pyyaml
+alpha_vantage
+pandas_datareader
+pandas
+numpy
