@@ -1,5 +1,6 @@
 # pylint: disable=E1101, C0103
 """A dash application for plotting up-to-date stock prices."""
+import os
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import dash
@@ -52,4 +53,7 @@ app.css.append_css(
     {"external_url": "https://codepen.io/chriddyp/pen/brPBPO.css"})
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    # Bind to PORT if defined, otherwise default to 5000.
+    port = int(os.environ.get('PORT', 5000))
+    debug = bool(os.environ.get('FLASK_DEBUG', 1))
+    app.run_server(debug=debug, host='0.0.0.0', port=port)
