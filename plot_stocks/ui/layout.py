@@ -62,8 +62,8 @@ def layout(symbols):
 def get_periods():
     """Return a list of relativedelta objects."""
     return [
-        relativedelta(hours=8),
-        relativedelta(days=6, hours=8),
+        relativedelta(),
+        relativedelta(days=6),
         relativedelta(months=1),
         relativedelta(months=3),
         relativedelta(years=1),

@@ -35,9 +35,9 @@ def update_figure(selected_symbols, selected_period):
 
     selected_data = data.loc[selected_symbols]
 
-    start = (datetime.today() - relativedelta(hour=10)).replace(
-        hour=16, minute=0, second=0, microsecond=0)\
-        - periods[selected_period]
+    start = (datetime.today() - relativedelta(hours=9)).replace(
+        hour=8, minute=30, second=0, microsecond=0
+        ) - periods[selected_period]
 
     return ui.plot_history(
         selected_data[

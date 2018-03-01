@@ -7,7 +7,6 @@ def plot_history(data, names):
     layout = dict(
         yaxis=dict(separatethousands=True),
         margin=dict(l=40, b=40, t=40, r=40),
-        # hoverinfo='text+x+y',
         showlegend=True
         )
     for (sym, dat), name in\
@@ -16,30 +15,6 @@ def plot_history(data, names):
             go.Scatter(
                 x=dat.index.get_level_values(1),
                 y=dat['close'],
-                text=sym,
-                name=name
-            )
-        )
-    return dict(data=traces, layout=layout)
-
-def plot_recent(data, names, start, end):
-    """Plot figure."""
-    traces = []
-    layout = dict(
-        xaxis=dict(
-            range=[start, end]
-        ),
-        margin=dict(l=40, b=40, t=40, r=40),
-        # hoverinfo='text+x+y',
-        showlegend=True
-        )
-    for (sym, dat), name in\
-        zip(data.groupby(level=0), names):
-        traces.append(
-            go.Scatter(
-                x=dat.index.levels[1],
-                y=dat['close'],
-                # mode='lines',
                 text=sym,
                 name=name
             )
